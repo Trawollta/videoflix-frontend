@@ -1,0 +1,104 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E; 
+}
+
+.video-player-container {
+  background-color: #1E1E1E; 
+  text-align: center;
+  height: 90vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-button img {
+  width: 30px;
+  height: 30px;
+  filter: invert(33%) sepia(27%) saturate(1537%) hue-rotate(18deg) brightness(96%) contrast(98%); /* Farbfilter für #a08048 */
+}
+
+.video-wrapper {
+  position: relative;
+  width: 80%; /* Breite angepasst für bessere Darstellung */
+  height: 0;
+  padding-bottom: 56.25%;
+  background-color: #000; 
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.play-button:hover {
+  opacity: 1;
+}
+
+h2 {
+  font-size: 24px; 
+  margin-bottom: 10px; 
+  color: white;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px; 
+  color: white;
+}
+
+.video-thumbnail {
+  width: 100px; 
+  height: auto;
+  cursor: pointer;
+}
+
+.group {
+  margin-bottom: 20px;
+}
+
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video {
+  margin: 10px;
+  flex: 1 0 21%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.video h3, .video p {
+  margin: 5px 0;
+  font-size: 14px;
+}

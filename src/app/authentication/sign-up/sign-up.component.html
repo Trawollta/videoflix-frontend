@@ -1,0 +1,49 @@
+<div class="sign-up-area">
+  <img src="assets/img/cinema.jpg" alt="background" class="background">
+  <button class="back-button" (click)="goBack()">
+    <img src="assets/img/back_arrow.svg" alt="Back" />
+  </button>
+  <div class="login-container">
+    <div class="login-content">
+      <div>
+        <h1>Sign up</h1>
+        <hr>
+      </div>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="input-wrapper">
+          <input type="email" formControlName="email" class="form-control" placeholder="E-Mail-Adresse" autocomplete="off">
+        </div>
+        <div class="input-wrapper">
+          <input type="password" formControlName="password1" class="form-control" placeholder="Passwort" autocomplete="off">
+        </div>
+        <div *ngIf="signUpForm.get('password1')?.invalid && (signUpForm.get('password1')?.dirty || signUpForm.get('password1')?.touched)" class="error-message">
+          <small *ngIf="signUpForm.get('password1')?.errors?.['invalidPassword']">Das Passwort muss mindestens 8 Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.</small>
+        </div>
+        <div class="input-wrapper">
+          <input type="password" formControlName="password2" class="form-control" placeholder="Passwort bestätigen" autocomplete="off">
+        </div>
+        <div *ngIf="signUpForm.errors?.['mismatch'] && (signUpForm.get('password2')?.dirty || signUpForm.get('password2')?.touched)" class="error-message">
+          <small>Die Passwörter stimmen nicht überein. Bitte versuche es erneut.</small>
+        </div>
+        <div *ngIf="signUpError" class="error-message">
+          <span>Registrierungsdaten sind ungültig. Bitte versuche es erneut.</span>
+        </div>
+        <div class="button-container">
+          <div class="login-area">
+            <button type="submit">Sign up</button>
+          </div>
+        </div>
+      </form>
+    
+    </div>
+  </div>
+</div>
+
+<div class="legal-links">
+  <div class="privacy">
+    <a routerLink="/privacypolicy">Datenschutzrichtlinie</a>
+  </div>
+  <div class="imprint">
+    <a routerLink="/legalnotice">Impressum</a>
+  </div>
+</div>

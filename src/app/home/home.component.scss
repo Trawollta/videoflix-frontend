@@ -1,0 +1,58 @@
+.home-section {
+    background-color: #1E1E1E;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .group {
+    margin-bottom: 40px;
+  }
+  
+  .category-title {
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: left; 
+  }
+
+  h2 {
+    color: #a08048;
+  }
+  
+  .videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .video {
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .video-thumbnail {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .video-thumbnail:hover {
+    transform: scale(1.1);
+  }
+  
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+  }
+  

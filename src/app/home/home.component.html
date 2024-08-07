@@ -1,0 +1,12 @@
+<div class="home-section">
+  <div *ngFor="let group of groupedVideos" class="group">
+    <h2>{{ group.category }}</h2>
+    <div class="videos">
+      <div class="video" *ngFor="let video of group.videos">
+        <img [src]="video.cover_file" (click)="openVideo(video.id, video.video_files['480p'])" alt="Cover Image" class="video-thumbnail">
+      </div>
+    </div>
+  </div>
+
+  <video *ngIf="lastVideoUrl" [src]="lastVideoUrl" autoplay muted loop class="background-video"></video>
+</div>
