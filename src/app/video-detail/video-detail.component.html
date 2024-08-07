@@ -7,14 +7,14 @@
   <p>{{ video.description }}</p>
   <div>
       <label for="quality">Qualität:</label>
-      <select id="quality" [(ngModel)]="selectedQuality">
+      <select id="quality" [(ngModel)]="selectedQuality" (change)="changeQuality()">
           <option value="480p">480p</option>
           <option value="720p">720p</option>
           <option value="1080p">1080p</option>
       </select>
   </div>
   <div class="video-wrapper">
-    <video width="320" height="240" controls>
+    <video #videoPlayer width="320" height="240" controls>
       <source [src]="getVideoUrl()" type="video/mp4">
       Your browser does not support the video tag.
     </video>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
@@ -15,6 +15,7 @@ import { Video } from '../interfaces/video';
 export class VideoDetailComponent implements OnInit {
   video?: Video;
   selectedQuality: string = '480p'; 
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,12 +28,22 @@ export class VideoDetailComponent implements OnInit {
     if (videoId) {
       this.videoService.getVideo(+videoId).subscribe((data: Video) => {
         this.video = data;
+        this.changeQuality();  // Set the initial video source
       });
     }
   }
 
   getVideoUrl(): string {
     return this.video?.video_files[this.selectedQuality] || '';
+  }
+
+  changeQuality(): void {
+    if (this.videoPlayer) {
+      const videoElement = this.videoPlayer.nativeElement;
+      videoElement.src = this.getVideoUrl();
+      videoElement.load();
+      videoElement.play();
+    }
   }
 
   goBack(): void {
