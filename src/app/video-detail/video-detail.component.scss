@@ -28,23 +28,34 @@ html, body {
 .back-button img {
   width: 30px;
   height: 30px;
-  filter: invert(33%) sepia(27%) saturate(1537%) hue-rotate(18deg) brightness(96%) contrast(98%); /* Farbfilter für #a08048 */
+  filter: invert(33%) sepia(27%) saturate(1537%) hue-rotate(18deg) brightness(96%) contrast(98%);
 }
 
 .video-wrapper {
   position: relative;
-  width: 80%; /* Breite angepasst für bessere Darstellung */
+  width: 80%; 
   height: 0;
   padding-bottom: 56.25%;
   background-color: #000; 
 }
 
-video {
+.video-thumbnail {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+video {
+  position: absolute;
+  top: 46px;
+  left: 81px;
+  width: 77%;
+  height: 58%;
+  z-index: 2;
 }
 
 .play-button {
@@ -58,6 +69,7 @@ video {
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 0.3s ease;
+  z-index: 3;
 }
 
 .play-button:hover {
@@ -76,29 +88,6 @@ p {
   color: white;
 }
 
-.video-thumbnail {
-  width: 100px; 
-  height: auto;
-  cursor: pointer;
-}
-
-.group {
-  margin-bottom: 20px;
-}
-
-.videos {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.video {
-  margin: 10px;
-  flex: 1 0 21%;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.video h3, .video p {
-  margin: 5px 0;
-  font-size: 14px;
+.qualy {
+  color: white;
 }

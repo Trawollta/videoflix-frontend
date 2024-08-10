@@ -1,9 +1,9 @@
 <div class="sign-up-area">
   <img src="assets/img/cinema.jpg" alt="background" class="background">
-  <button class="back-button" (click)="goBack()">
-    <img src="assets/img/back_arrow.svg" alt="Back" />
-  </button>
   <div class="login-container">
+    <button class="back-button" (click)="goBack()">
+      <img src="assets/img/back_arrow.svg" alt="Back" />
+    </button>
     <div class="login-content">
       <div>
         <h1>Sign up</h1>
@@ -30,20 +30,16 @@
         </div>
         <div class="button-container">
           <div class="login-area">
-            <button type="submit">Sign up</button>
+            <button type="submit" [disabled]="signUpForm.invalid">Sign up</button>
           </div>
         </div>
       </form>
     
+      <!-- Erfolgsnachricht -->
+      <div *ngIf="registrationSuccess" class="success-message">
+        {{ successMessage }}
+      </div>
+    
     </div>
-  </div>
-</div>
-
-<div class="legal-links">
-  <div class="privacy">
-    <a routerLink="/privacypolicy">Datenschutzrichtlinie</a>
-  </div>
-  <div class="imprint">
-    <a routerLink="/legalnotice">Impressum</a>
   </div>
 </div>

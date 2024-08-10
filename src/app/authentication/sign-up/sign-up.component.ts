@@ -20,7 +20,8 @@ export class SignUpComponent {
   });
 
   registrationSuccess = false;
-  signUpError = false; 
+  signUpError = false;
+  successMessage = ''; // Erfolgsnachricht
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -33,9 +34,15 @@ export class SignUpComponent {
       };
       try {
         await this.authService.register(userData).toPromise();
+        this.successMessage = 'Eine Bestätigungs-E-Mail wurde an Ihre Adresse gesendet. Bitte überprüfen Sie Ihren Posteingang.';
         this.registrationSuccess = true;
-        this.router.navigateByUrl('/login');
+
+        // Verzögertes Weiterleiten zum Login
+        setTimeout(() => {
+          this.router.navigateByUrl('/login');
+        }, 5000); // Weiterleitung nach 5 Sekunden
       } catch (error) {
+        this.signUpError = true;
         console.error('Registrierung fehlgeschlagen:', error);
       }
     }

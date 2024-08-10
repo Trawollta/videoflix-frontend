@@ -21,13 +21,13 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Transparentes Schwarz */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .back-button {
   position: absolute;
-  top: 40px;
-  left: 10px;
+  top: 230px;
+  left: 60px;
   background: none;
   border: none;
   cursor: pointer;
@@ -41,12 +41,12 @@ body, html {
 }
 
 .login-container {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.5); /* Transparentes Schwarz */
+  background-color: rgba(0, 0, 0, 0.5); 
   border-radius: 30px;
   gap: 40px;
   max-height: 493px;
@@ -149,4 +149,8 @@ button:hover {
   text-decoration: none;
   font-size: 16px;
   color: #A8A8A8;
+}
+
+.success-message {
+  color: white;
 }

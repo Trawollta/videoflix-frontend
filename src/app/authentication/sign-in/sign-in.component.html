@@ -15,43 +15,36 @@
           <div class="input-wrapper">
             <input type="password" id="password" formControlName="password" class="form-control" placeholder="Passwort" autocomplete="off">
           </div>
-          <div class="checkbox-container">
-            <input type="checkbox" formControlName="remember" id="remember-me"> <span>Remember me</span>
-          </div>
 
           <!-- Fehlermeldung hinzufügen -->
           <div *ngIf="loginError" class="error-message">
-            <span>Anmeldedaten sind falsch. Bitte versuche es erneut.</span>
+            <span>{{ loginError }}</span>
           </div>
 
           <div class="button-container">
             <div class="login-area">
-              <button type="submit">Log in</button>
+              <button type="submit" [disabled]="signInForm.invalid">Log in</button>
             </div>
           </div>
         </form>
         <div class="forgot-pw">
           <a>Forgot Password?</a>
-          <a class='btn'routerLink="/forgott-password">click here</a>
+          <a class='btn' routerLink="/forgott-password">click here</a>
         </div>
         <div class="signup-container">
           <div>
             <span>New to Videoflix?</span>
           </div>
           <div>
-            <a routerLink="/signup" class="primary-button">Sign up now</a>
+            <a routerLink="/signup" [class.disabled]="signInForm.invalid" class="primary-button">Sign up here</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="legal-links">
-    <div class="privacy">
-      <a routerLink="/privacypolicy">Datenschutzrichtlinie</a>
-    </div>
-    <div class="imprint">
-      <a routerLink="/legalnotice">Impressum</a>
-    </div>
-  </div>
 </ng-container>
+
+<!-- Erfolgsmeldung nach Registrierung -->
+<div *ngIf="registrationSuccessMessage" class="success-message">
+  {{ registrationSuccessMessage }}
+</div>

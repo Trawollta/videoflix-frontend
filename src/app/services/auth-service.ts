@@ -51,4 +51,8 @@ export class AuthService {
       new_password2: newPassword
     });
   }
+
+  activateAccount(uid: string, token: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/confirm-email/${uid}/${token}/`);
+  }
 }

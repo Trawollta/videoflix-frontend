@@ -6,6 +6,7 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { ForgottPasswordComponent } from './forgott-password/forgott-password.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { ResettPasswordComponent } from './resett-password/resett-password.component';
+import { ActivateUserComponent } from './activate-user/activate-user.component';
 
 export const routes: Routes = [
   { path: '', component: SplashScreenComponent },
@@ -18,6 +19,8 @@ export const routes: Routes = [
   },
   { path: 'video/:id', component: VideoDetailComponent }, // Diese Route sollte auf der Hauptebene sein
   { path: 'reset-password-confirm/:uidb64/:token', component: ResettPasswordComponent },
+  { path: 'confirm-email/:uidb64/:token', component: ActivateUserComponent },
+
 ];
 
 
