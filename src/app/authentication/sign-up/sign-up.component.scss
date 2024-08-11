@@ -12,7 +12,7 @@ body, html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Hintergrundbild hinter den Inhalten */
+  z-index: -1;
 }
 
 .sign-up-area {
@@ -26,8 +26,8 @@ body, html {
 
 .back-button {
   position: absolute;
-  top: 230px;
-  left: 60px;
+  top: 26%;
+  left: 10%;
   background: none;
   border: none;
   cursor: pointer;

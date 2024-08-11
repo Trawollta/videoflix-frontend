@@ -1,25 +1,30 @@
 <div *ngIf="video" class="video-player-container">
+  <h2>{{ video.title }}</h2>
+  <p>{{ video.description }}</p>
+  <div>
+    <label class="qualy" for="quality">Qualität:</label>
+    <select id="quality" [(ngModel)]="selectedQuality">
+      <option value="480p">480p</option>
+      <option value="720p">720p</option>
+      <option value="1080p">1080p</option>
+    </select>
+  </div>
+
   <button class="back-button" (click)="goBack()">
     <img src="assets/img/back_arrow.svg" alt="Back" />
   </button>
 
-  <h2>{{ video.title }}</h2>
-  <p>{{ video.description }}</p>
-  <div>
-      <label class="qualy" for="quality">Qualität:</label>
-      <select id="quality" [(ngModel)]="selectedQuality">
-          <option value="480p">480p</option>
-          <option value="720p">720p</option>
-          <option value="1080p">1080p</option>
-      </select>
-  </div>
-  
-  <div class="video-wrapper">
-    <img src="assets/img/startvideo2.jpg" alt="Video Start" class="video-thumbnail" />
-    <video width="320" height="240" controls>
-      <source [src]="getVideoUrl()" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="play-button"></div>
+  <div class="project-scene">
+    <div class="project-screen">
+      <div class="project-wrapper">
+        <img class="cinema" src="assets/img/startvideo2.jpg"/>
+        <div class="video-wrapper">
+          <video width="720" height="240" controls>
+            <source [src]="getVideoUrl()" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
