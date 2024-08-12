@@ -5,10 +5,43 @@ html, body {
   background-color: #1E1E1E; 
 }
 
+.title-container {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+h2 {
+  font-size: 36px; 
+  margin-bottom: 15px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 30px; 
+  color: #ddd;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.control-panel {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
 .project-scene {
   position: relative;
   width: 70%;
   height: 70%;
+  aspect-ratio: 16 / 9;
 }
 
 .project-screen {
@@ -16,8 +49,12 @@ html, body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: 140%;
   height: 100%;
+  @media (min-width: 800px) {
+    width: 100%;
+
+  }
 
   img {
     width: 100%;
@@ -27,15 +64,20 @@ html, body {
 
 .project-wrapper {
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 80%;
   border: 1px solid #a08048;
+  @media (min-width: 800px) {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid #a08048;
+  }
 }
 
 .video-player-container {
   background-color: #1E1E1E; 
   text-align: center;
-  height: 81vh; 
+  height: 100%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,12 +102,23 @@ html, body {
 
 .video-wrapper {
   position: absolute;
-  left: 50%;
   transform: translateX(-50%);
+  aspect-ratio: inherit;
+  width: 75%;
+  height: 50%; 
   top: 6%;
-  border: 1px solid red;
-  width: 72%;
-  height: 57%; 
+  left: 50%;
+ 
+  @media (min-width: 800px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6%;
+    width: 72%;
+    height: 57%; 
+    aspect-ratio: inherit;
+   
+  }
 }
 
 video {
@@ -77,17 +130,111 @@ video {
   position: relative;
 }
 
-h2 {
-  font-size: 24px; 
-  margin-bottom: 10px; 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E; 
+}
+
+.project-scene {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  aspect-ratio: 16 / 9;
+}
+
+.project-screen {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 100%;
+  @media (min-width: 800px) {
+    width: 100%;
+
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.project-wrapper {
+  width: 100%;
+  height: 80%;
+  border: 1px solid #a08048;
+  @media (min-width: 800px) {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid #a08048;
+  }
+}
+
+.video-player-container {
+  background-color: #1E1E1E; 
+  text-align: center;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-button img {
+  width: 30px;
+  height: 30px;
+  filter: invert(33%) sepia(27%) saturate(1537%) hue-rotate(18deg) brightness(96%) contrast(98%);
+}
+
+.video-wrapper {
+  position: absolute;
+  transform: translateX(-50%);
+  aspect-ratio: inherit;
+  width: 75%;
+  height: 50%; 
+  top: 6%;
+  left: 50%;
+ 
+  @media (min-width: 800px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6%;
+    width: 72%;
+    height: 57%; 
+    aspect-ratio: inherit;
+   
+  }
+}
+
+video {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  z-index: 2;
+  display: block;
+  position: relative;
+}
+
+.qualy {
   color: white;
 }
 
-p {
-  font-size: 16px;
-  margin-bottom: 20px; 
-  color: white;
-}
 
 .qualy {
   color: white;
