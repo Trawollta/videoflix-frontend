@@ -26,8 +26,8 @@ body, html {
 
 .back-button {
   position: absolute;
-  top: 26%;
-  left: 10%;
+  top: 10%;
+  left: 5%;
   background: none;
   border: none;
   cursor: pointer;
@@ -38,9 +38,20 @@ body, html {
   width: 30px;
   height: 30px;
   filter: invert(100%);
+  transition: transform 0.3s ease;
+}
+
+.back-button img:hover {
+  transform: scale(1.2); 
+}
+
+.btn-area {
+  display: flex;
+  justify-content: space-between;
 }
 
 .login-container {
+  position: relative;
   height: 80vh;
   display: flex;
   align-items: center;
@@ -54,7 +65,7 @@ body, html {
   margin: 40px auto;
   width: 75%;
   @media (min-width: 700px) {
-      width: 800px;
+      width:60%;
       margin: auto;
       margin-top: 200px;
   }
@@ -120,14 +131,14 @@ button:hover {
   background-color: #238bbf;
 }
 
-.forgot-pw, .signup-container {
-  margin-top: 20px;
-}
 
 .signup-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    color: white;
+    font-size: 12px;
 }
 
 .primary-button {
