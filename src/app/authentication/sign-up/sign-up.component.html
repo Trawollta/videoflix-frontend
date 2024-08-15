@@ -31,12 +31,21 @@
         <div *ngIf="signUpError" class="error-message">
           <span>Registrierungsdaten sind ungültig. Bitte versuche es erneut.</span>
         </div>
+        
+        <!-- Checkbox für Datenschutz -->
+        <div class="input-wrapper">
+          <input type="checkbox" formControlName="termsAccepted">
+          <label for="termsAccepted" class="checkbox-label">I accept the <a href="/privacy" target="_blank">privacy policy</a>.</label>
+        </div>
+      
         <div class="button-container">
           <div class="login-area">
             <button type="submit" [disabled]="signUpForm.invalid">Sign up</button>
+
           </div>
         </div>
       </form>
+      
     
       <!-- Erfolgsnachricht -->
       <div *ngIf="registrationSuccess" class="success-message">

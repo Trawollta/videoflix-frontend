@@ -15,8 +15,16 @@ header {
 }
 
 .logo img {
-  height: 50px;
+  height: 32px;
 }
+
+@media screen and (min-width: 800px) {
+  .logo img {
+    height: 50px;
+  }
+}
+
+
 
 .login-button,
 .logout-button {

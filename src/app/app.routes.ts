@@ -7,12 +7,16 @@ import { ForgottPasswordComponent } from './forgott-password/forgott-password.co
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { ResettPasswordComponent } from './resett-password/resett-password.component';
 import { ActivateUserComponent } from './activate-user/activate-user.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 export const routes: Routes = [
   { path: '', component: SplashScreenComponent },
   { path: 'login', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'forgott-password', component: ForgottPasswordComponent },
+  { path: 'imprint', component: ImpressumComponent },
+  { path: 'privacy', component: PrivacyComponent },
   {
     path: 'home',
     component: HomeComponent,
@@ -22,24 +26,5 @@ export const routes: Routes = [
   { path: 'confirm-email/:uidb64/:token', component: ActivateUserComponent },
 
 ];
-
-
-// { path: '', component: SplashScreenComponent },
-// { path: 'login', component: SignInComponent,
-//   children: [
-//     { path: 'signup', component: SignUpComponent }
-//   ]
-//  },
-
-// // { path: 'signup', component: SignUpComponent },
-// { path: 'forgott-password', component: ForgottPasswordComponent },
-// {
-//   path: 'home',
-//   component: HomeComponent,
-//   children: [
-//     { path: 'video/:id', component: VideoDetailComponent }
-//   ]
-// }
-// ];
 
 export class AppRoutingModule { }

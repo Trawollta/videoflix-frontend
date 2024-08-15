@@ -1,0 +1,186 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.sign-up-area {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.back-button {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.back-button img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+    transition: transform 0.3s ease;
+}
+
+.back-button img:hover {
+    transform: scale(1.2);
+}
+
+.login-container {
+    position: relative;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-radius: 30px;
+    gap: 20px;
+    box-shadow: 0px 0px 14px 3px #00000040;
+    padding: 20px;
+    width: 90%;
+    color: white;
+    overflow-y: auto;
+    max-height: 90vh;
+    @media (min-width: 700px) {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
+
+.login-content {
+    text-align: left;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 1.8em;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+h2, h3, h4 {
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #dcdcdc;
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+hr {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #29ABE2;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.login-area {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+button:enabled {
+    background-color: red;
+    cursor: pointer;
+}
+
+button:hover:enabled {
+    background-color: #238bbf;
+}
+
+.signup-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    color: white;
+    font-size: 14px; /* Größere Schrift für Links */
+}
+
+.privacy, .imprint {
+    text-decoration: none;
+    font-size: 14px;
+    color: #A8A8A8;
+}
+
+.success-message {
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .login-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .signup-container {
+        font-size: 12px;
+    }
+}

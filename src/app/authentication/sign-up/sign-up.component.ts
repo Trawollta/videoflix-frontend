@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth-service';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,12 +17,23 @@ export class SignUpComponent {
   signUpForm = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password1: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
-    password2: new FormControl<string>('', [Validators.required])
-  });
+    password2: new FormControl<string>('', [Validators.required]),
+    termsAccepted: new FormControl<boolean>(false, [Validators.requiredTrue])
+  }, { validators: this.passwordMatchValidator });
+
+  passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password1');
+    const confirmPassword = control.get('password2');
+    if (password?.value !== confirmPassword?.value) {
+      return { mismatch: true };
+    }
+    return null;
+  }
+
 
   registrationSuccess = false;
   signUpError = false;
-  successMessage = ''; // Erfolgsnachricht
+  successMessage = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 

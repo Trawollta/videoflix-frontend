@@ -34,6 +34,15 @@ body, html {
   z-index: 10;
 }
 
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-label {
+  color: white;
+  font-size: 0.875em;
+}
+
 .back-button img {
   width: 30px;
   height: 30px;
@@ -122,12 +131,18 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: red;
+  background-color: grey; 
   color: white;
-  cursor: pointer;
+  cursor: not-allowed; 
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:enabled {
+  background-color: red; 
+  cursor: pointer; 
+}
+
+button:hover:enabled {
   background-color: #238bbf;
 }
 
