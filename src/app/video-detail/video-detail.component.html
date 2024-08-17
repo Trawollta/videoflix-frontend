@@ -6,7 +6,7 @@
   
   <div class="control-panel">
     <label class="qualy" for="quality">Qualität:</label>
-    <select class="quality" id="quality" [(ngModel)]="selectedQuality">
+    <select class="quality" id="quality" [(ngModel)]="selectedQuality" (change)="onQualityChange()">
       <option value="480p">480p</option>
       <option value="720p">720p</option>
       <option value="1080p">1080p</option>
