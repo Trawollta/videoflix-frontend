@@ -1,7 +1,6 @@
 <div class="sign-up-area">
   <img src="assets/img/cinema.jpg" alt="background" class="background">
   <div class="login-container">
-   
     <div class="login-content">
       <div class="btn-area">
         <div class="back-button" (click)="goBack()">
@@ -16,6 +15,9 @@
         <div class="input-wrapper">
           <input type="email" formControlName="email" class="form-control" placeholder="E-Mail-Adresse" autocomplete="off">
         </div>
+        <div *ngIf="signUpForm.get('email')?.errors?.['emailTaken']" class="error-message">
+          <small>Diese E-Mail-Adresse ist bereits vergeben. Bitte verwenden Sie eine andere.</small>
+        </div>
         <div class="input-wrapper">
           <input type="password" formControlName="password1" class="form-control" placeholder="Passwort" autocomplete="off">
         </div>
@@ -28,10 +30,11 @@
         <div *ngIf="signUpForm.errors?.['mismatch'] && (signUpForm.get('password2')?.dirty || signUpForm.get('password2')?.touched)" class="error-message">
           <small>Die Passwörter stimmen nicht überein. Bitte versuche es erneut.</small>
         </div>
-        <div *ngIf="signUpError" class="error-message">
+        
+        <div *ngIf="signUpError && !signUpForm.get('email')?.errors?.['emailTaken']" class="error-message">
           <span>Registrierungsdaten sind ungültig. Bitte versuche es erneut.</span>
         </div>
-        
+
         <!-- Checkbox für Datenschutz -->
         <div class="input-wrapper">
           <input type="checkbox" formControlName="termsAccepted">
@@ -41,17 +44,16 @@
         <div class="button-container">
           <div class="login-area">
             <button type="submit" [disabled]="signUpForm.invalid">Sign up</button>
-
           </div>
         </div>
       </form>
-      
     
       <!-- Erfolgsnachricht -->
-      <div *ngIf="registrationSuccess" class="success-message">
-        {{ successMessage }}
-      </div>
+     
     
+    </div>
+    <div *ngIf="registrationSuccess" class="success-message">
+      {{ successMessage }}
     </div>
   </div>
 </div>

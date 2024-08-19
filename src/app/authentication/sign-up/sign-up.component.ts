@@ -48,17 +48,22 @@ export class SignUpComponent {
         await this.authService.register(userData).toPromise();
         this.successMessage = 'Eine Bestätigungs-E-Mail wurde an Ihre Adresse gesendet. Bitte überprüfen Sie Ihren Posteingang.';
         this.registrationSuccess = true;
-
+  
         // Verzögertes Weiterleiten zum Login
         setTimeout(() => {
           this.router.navigateByUrl('/login');
         }, 5000); // Weiterleitung nach 5 Sekunden
-      } catch (error) {
-        this.signUpError = true;
-        console.error('Registrierung fehlgeschlagen:', error);
+      } catch (error: any) {
+        if (error.error && error.error.error === 'Diese E-Mail-Adresse ist bereits vergeben.') {
+          this.signUpForm.get('email')?.setErrors({ emailTaken: true });
+        } else {
+          this.signUpError = true;
+          console.error('Registrierung fehlgeschlagen:', error);
+        }
       }
     }
   }
+  
 
   goBack(): void {
     this.router.navigate(['/login']);
