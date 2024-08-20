@@ -12,13 +12,13 @@ export class VideoService {
 
   constructor(private http: HttpClient) { }
 
-  setLastVideo(videoUrl: string): void {
-    localStorage.setItem(this.lastVideoKey, videoUrl);
-  }
+  // setLastVideo(videoUrl: string): void {
+  //   localStorage.setItem(this.lastVideoKey, videoUrl);
+  // }
 
-  getLastVideo(): string | null {
-    return localStorage.getItem(this.lastVideoKey);
-  }
+  // getLastVideo(): string | null {
+  //   return localStorage.getItem(this.lastVideoKey);
+  // }
 
   getVideos(): Observable<Video[]> {
     return this.http.get<Video[]>(`${this.baseUrl}`);

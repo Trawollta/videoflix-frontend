@@ -1,65 +1,88 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { VideoService } from '../services/video-service';
 import { Video } from '../interfaces/video';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-video-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './video-detail.component.html',
   styleUrls: ['./video-detail.component.scss']
 })
-export class VideoDetailComponent implements OnInit {
-  video?: Video;
-  selectedQuality: string = '1080p';
+export class VideoDetailComponent implements OnInit, OnDestroy {
+  videoId: string | null = null;
+  video: Video | null = null;
+  selectedQuality: string = '1080p'; 
+  private routeSub: Subscription | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private videoService: VideoService
-  ) { }
+    private videoService: VideoService,
+    private router: Router 
+  ) {}
 
   ngOnInit(): void {
-    const videoId = this.route.snapshot.paramMap.get('id');
-    if (videoId) {
-      this.videoService.getVideo(+videoId).subscribe((data: Video) => {
-        this.video = data;
-        this.autoSelectQuality();
-      });
-    }
-    console.log('Video URL für die ausgewählte Qualität:', this.getVideoUrl());
+    this.routeSub = this.route.paramMap.subscribe(params => { 
+      this.videoId = params.get('id');
+      console.log('Empfangene Video-ID:', this.videoId);  // Überprüfe, ob diese ID korrekt ist
+    
+      if (this.videoId !== null) {
+        this.videoService.getVideo(+this.videoId).subscribe((data: Video) => {
+          console.log('Empfangenes Video:', data); // Überprüfe, ob alle Felder vorhanden sind
+          this.video = data;
+          this.autoSelectQuality(); 
+        }, (error) => {
+          console.error('Fehler beim Laden des Videos:', error);
+        });
+      } else {
+        console.error('Video-ID ist null');
+      }
+    });
   }
 
-  getVideoUrl(): string {
-    const url = this.video?.video_files[this.selectedQuality] || '';
-    return url;
+  ngOnDestroy(): void {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 
   autoSelectQuality(): void {
-    if (!this.getVideoUrl()) {
-      if (this.video?.video_files['1080p']) {
+    if (this.video) {
+      if (this.video.video_file_1080p) {
         this.selectedQuality = '1080p';
-      } else if (this.video?.video_files['720p']) {
+      } else if (this.video.video_file_720p) {
         this.selectedQuality = '720p';
-      } else if (this.video?.video_files['480p']) {
+      } else if (this.video.video_file_480p) {
         this.selectedQuality = '480p';
       }
     }
   }
 
-  onQualityChange(): void {
-    const videoElement = document.querySelector('video');
-    if (videoElement) {
-      videoElement.src = this.getVideoUrl();
-      videoElement.load(); 
-      videoElement.play();
+  getVideoUrl(): string {
+    if (this.video) {
+      console.log('Video-Files:', this.video.video_files); // Überprüfe den Inhalt von video_files
+      const url = this.selectedQuality === '480p' ? this.video.video_files['480p'] :
+                  this.selectedQuality === '720p' ? this.video.video_files['720p'] :
+                  this.selectedQuality === '1080p' ? this.video.video_files['1080p'] : '';
+      console.log('Abgespielte Video-URL:', url);
+      return url || '';
     }
+    return '';
+  }
+
+  onQualityChange(): void {
+    console.log('Qualität geändert zu:', this.selectedQuality);
   }
 
   goBack(): void {
+    this.videoId = null;
+    this.video = null;
+    this.selectedQuality = '1080p';
+
     this.router.navigate(['/home']);
   }
 }

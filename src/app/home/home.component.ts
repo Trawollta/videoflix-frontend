@@ -19,18 +19,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.videoService.getGroupedVideos().subscribe((data: GroupedVideos[]) => {
-      console.log(data);  // Überprüfen Sie hier die Struktur der zurückgegebenen Daten
+      console.log('Erhaltene Daten:', data);
       this.groupedVideos = data;
     }, (error) => {
       console.error('Fehler beim Laden der gruppierten Videos', error);
     });
-
-    // Letztes Video abrufen
-    this.lastVideoUrl = this.videoService.getLastVideo();
   }
 
+  
   openVideo(videoId: number, videoUrl: string): void {
-    this.videoService.setLastVideo(videoUrl);
+    console.log('videoid:', videoId);
     this.router.navigate(['/video', videoId]);
   }
 }
