@@ -28,11 +28,11 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSub = this.route.paramMap.subscribe(params => { 
       this.videoId = params.get('id');
-      console.log('Empfangene Video-ID:', this.videoId);  // Überprüfe, ob diese ID korrekt ist
+      console.log('Empfangene Video-ID:', this.videoId);
     
       if (this.videoId !== null) {
         this.videoService.getVideo(+this.videoId).subscribe((data: Video) => {
-          console.log('Empfangenes Video:', data); // Überprüfe, ob alle Felder vorhanden sind
+          console.log('Empfangenes Video:', data);
           this.video = data;
           this.autoSelectQuality(); 
         }, (error) => {
@@ -64,7 +64,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
 
   getVideoUrl(): string {
     if (this.video) {
-      console.log('Video-Files:', this.video.video_files); // Überprüfe den Inhalt von video_files
+      console.log('Video-Files:', this.video.video_files);
       const url = this.selectedQuality === '480p' ? this.video.video_files['480p'] :
                   this.selectedQuality === '720p' ? this.video.video_files['720p'] :
                   this.selectedQuality === '1080p' ? this.video.video_files['1080p'] : '';
