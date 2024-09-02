@@ -21,7 +21,6 @@ export class ActivateUserComponent implements OnInit {
       this.authService.activateAccount(userId, token).subscribe(
         response => {
           this.activationMessage = 'Aktivierung erfolgreich!';
-          console.log('Aktivierung erfolgreich:', response);
           setTimeout(() => {
             this.router.navigate(['/login']); 
           }, 3000);
