@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class VideoService {
-  private baseUrl = environment.apiUrl;
+  private baseUrl = `${environment.apiUrl}videos/`;
   private readonly lastVideoKey = 'lastVideo';
 
   constructor(private http: HttpClient) { }
