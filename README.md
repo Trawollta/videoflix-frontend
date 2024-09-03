@@ -1,7 +1,6 @@
 Installation
 1. Repository klonen
 
-
 ```bash
 git clone <https://github.com/Trawollta/videoflix-frontend>
 
