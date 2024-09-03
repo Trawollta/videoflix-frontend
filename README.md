@@ -17,10 +17,10 @@ ng g environments/environments
 Füge dann in der Datei environment.ts folgenden Code hinzu:
 
 ```bash
-<export const environment = {
+export const environment = {
   production: false,
   apiUrl: 'http://localhost:8000/'  // URL zu deiner lokalen Django API
-};>
+};
 
 4. Lokalen Server starten
 Um den lokalen Entwicklungsserver zu starten, führe folgenden Befehl aus:
