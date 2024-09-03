@@ -1,27 +1,18 @@
-# Videoflix
+Installation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+Clone
+git clone https://github.com/Trawollta/videoflix-frontend
+Install
+npm install
+Configure Environment
+ng g environments/environments
 
-## Development server
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/'  // URL zu deiner lokalen Django API
+};
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+and go to environment.development.ts and type:
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run local host
+ng s

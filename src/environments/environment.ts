@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://jan-woll.developerakademie.org/'
+  apiUrl: 'http://localhost:8000/'
 };
 
 
